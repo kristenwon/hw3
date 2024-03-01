@@ -104,7 +104,7 @@ void Heap<T,PComparator>::trickleDown(int index)
 {
   int bestChild = index;
   for(int i=0; i < m_; i++){
-    if(index*m_+i < heapVect.size()-1 && c_(heapVect[index*m_+i], heapVect[bestChild])){
+    if(index*m_+i < heapVect.size() && c_(heapVect[index*m_+i], heapVect[bestChild])){
       bestChild = index * m_ + i;
     }
   }
