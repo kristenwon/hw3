@@ -102,8 +102,8 @@ void Heap<T,PComparator>::push(const T& item)
 template <typename T, typename PComparator>
 void Heap<T,PComparator>::trickleDown(int index)
 {
-  int bestChild = index * m_ + 1;
-  for(int i=1; i < m_; i++){
+  int bestChild = index;
+  for(int i=0; i < m_; i++){
     if(index*m_+i < heapVect.size() && c_(heapVect[index*m_+i], heapVect[bestChild])){
       bestChild = index * m_ + i;
     }
