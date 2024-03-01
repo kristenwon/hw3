@@ -7,8 +7,8 @@ int main(){
     
     // testing default values binary min-heap
     Heap<int> test;
-    test.push(1);
-    // test.push(12);
+    test.push(3);
+    test.push(10);
     // test.push(3);
     // test.push(11);
     // test.push(6);
