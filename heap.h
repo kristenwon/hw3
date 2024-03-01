@@ -88,15 +88,25 @@ void Heap<T,PComparator>::trickleUp(int index)
   int parent = (index - 1) / m_;
   if(c_(heapVect[index], heapVect[parent])){
     std::swap(heapVect[index], heapVect[parent]);
+    index = parent;
     trickleUp(parent);
   }
 }
 
+// iterative push
 template <typename T, typename PComparator>
 void Heap<T,PComparator>::push(const T& item)
 {
   heapVect.push_back(item);
   trickleUp(heapVect.size()-1);
+  // int index = heapVect.size()-1;
+  // while(index != 0){
+  //   int parent = (index-1) / m_;
+  //   if(c(heapVect[index], heapVect[parent])){
+  //     std::swap(index, parent);
+  //     index = parent;
+  //   }
+  // }
 }
 
 template <typename T, typename PComparator>
