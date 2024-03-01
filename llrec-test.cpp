@@ -86,9 +86,22 @@ int main(int argc, char* argv[])
     print(head);
 
     // Test out your linked list code
+    Node* smaller = NULL;
+    Node* larger = NULL;
 
+    llpivot(head, smaller, larger, 10);
+    cout << "Smaller: ";
+    print(smaller);
+    cout << "Larger: ";
+    print(larger);
 
-
+    filtOdd f1; filtEven f2;
+    smaller = llfilter(smaller, f1);
+    cout << "Filtered odds out of smaller: ";
+    print(smaller);
+    larger = llfilter(larger, f2);
+    cout << "Filtered evens out of larger: ";
+    print(larger);
     
     return 0;
 
