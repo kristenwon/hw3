@@ -102,16 +102,21 @@ void Heap<T,PComparator>::push(const T& item)
 template <typename T, typename PComparator>
 void Heap<T,PComparator>::trickleDown(int index)
 {
-  int bestChild = index;
-  for(int i=0; i < m_; i++){
-    if(index*m_+i < heapVect.size() && c_(heapVect[index*m_+i], heapVect[bestChild])){
-      bestChild = index * m_ + i;
+  int child = index * m_ + 1;
+  while (child < heapVect.size()) {
+    int bestChild = child;
+    int endChild = std::min(child + m_, static_cast<int>(heapVect.size()));
+    for (int i = child + 1; i < endChild; ++i) {
+      if (c_(heapVect[i], heapVect[bestChild])) {
+        bestChild = i;
+      }
     }
-  }
-
-  if(bestChild != index){
+    if (c_(heapVect[index], heapVect[bestChild])) {
+      break;
+    }
     std::swap(heapVect[index], heapVect[bestChild]);
-    trickleDown(bestChild);
+    index = bestChild;
+    child = index * m_ + 1;
   }
 }
 

@@ -5,19 +5,24 @@
 //*********************************************
 void llpivot(Node *&head, Node *&smaller, Node *&larger, int pivot)
 {
-  if(head == NULL)
-  {
-    smaller = NULL;
-    larger = NULL;
-    return;
-  }
-  if(head->val <= pivot)
-  {
+  smaller = NULL;
+  larger = NULL;
+  llpivothelper(head, smaller, larger, pivot);
+}
+
+void llpivothelper(Node *&head, Node *&smaller, Node *&larger, int pivot)
+{
+  if(head == NULL){ return; }
+  if(head->val <= pivot){
     smaller = head;
-    llpivot(head->next, smaller->next, larger, pivot);
+    head = head->next;
+    smaller->next = NULL;
+    llpivothelper(head, smaller->next, larger, pivot);
   }
   else {
     larger = head;
-    llpivot(head->next, smaller, larger->next, pivot);
+    head = head->next;
+    larger->next = NULL;
+    llpivothelper(head, smaller, larger->next, pivot);
   }
 }
