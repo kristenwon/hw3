@@ -69,7 +69,6 @@ private:
   // helper functions
   void trickleUp(int index);
   void  trickleDown(int index);
-  int child(int index, int k) const;
 };
 
 // Add implementation of member functions here
@@ -105,7 +104,7 @@ void Heap<T,PComparator>::trickleDown(int index)
 {
   int bestChild = index;
   for(int i=0; i < m_; i++){
-    if(c_(heapVect[index*m_+i], heapVect[bestChild]) && index*m_+i < heapVect.size()-1){
+    if(index*m_+i < heapVect.size()-1 && c_(heapVect[index*m_+i], heapVect[bestChild])){
       bestChild = index * m_ + i;
     }
   }
